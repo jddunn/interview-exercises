@@ -25,6 +25,16 @@ class ReverseStr():
 
 class PalindromeChecker():
 
+    def is_palindrome_recursive(self, str_text):
+        str_text = StripText().strip(str_text.lower())
+        if len(str_text) < 1:
+            return True
+        else:
+            if str_text[0] == str_text[-1]:
+                return self.is_palindrome_recursive(str_text[1:-1])
+            else:
+                return False
+
     def is_palindrome(self, str_text):
         str_text = str_text.lower()
         str_text = StripText().strip(str_text)
@@ -39,16 +49,17 @@ import unittest
 
 class PalindromeTest(unittest.TestCase):
 
-    def test_palindrome(self):
+    def test_palindrome_with(self):
         palindrome_checker = PalindromeChecker()
-        print("Testing palindrome: ", "anna")
-        self.assertTrue(palindrome_checker.is_palindrome("anna"))
-
-    def test_palindrome_with_punct(self):
-        palindrome_checker = PalindromeChecker()
-        print("Testing palindrome sentence: ", "Do Geese See God?")
+        print("Testing palindrome with reverse string equality: ", """Do Geese See God?""")
         self.assertTrue(palindrome_checker.is_palindrome("Do Geese See God?"))
 
+    def test_palindrome_with_recursion(self):
+        palindrome_checker = PalindromeChecker()
+        print("Testing palindrome with recursion: ", "Do Geese See God?")
+        self.assertTrue(palindrome_checker.is_palindrome_recursive("Do Geese See God?"))
+
+    # def test_p
 
 if __name__ == '__main__':
     unittest.main()
