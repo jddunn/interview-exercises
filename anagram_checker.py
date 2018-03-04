@@ -1,4 +1,4 @@
-# Sentence-length anagram checker
+# Sentence-length anagram checker with three implementations
 
 class Stack():
 
@@ -36,8 +36,35 @@ class StripText():
 
 class AnagramChecker():
 
+    def check_anagram_with_dict(self, str1, str2):
+        """Checks if two strings are anagrams by storing and checking char counts in dictionaries (linear time)."""
+        str1 = str1.lower()
+        str2 = str2.lower()
+        str1 = StripText.strip(self, str1)
+        str2 = StripText.strip(self, str2)
+        str1_count = {}
+        str2_count = {}
+        for each in str1:
+            try:
+                if str1_count[each]:
+                    str1_count[each] += 1
+            except:
+                str1_count[each] = 1
+        for each in str2:
+            try:
+                if str2_count[each]:
+                    str2_count[each] += 1
+            except:
+                str2_count[each] = 1
+        for each in str1_count:
+            if str1_count[each] == str2_count[each]:
+                pass
+            else:
+                return False
+        return True
+
     def check_anagram_with_sort(self, str1, str2):
-        """Checks if two strings are anagrams with built-in sort."""
+        """Checks if two strings are anagrams with built-in sort (linear time)."""
         str1 = str1.lower()
         str2 = str2.lower()
         str1 = list(str1)
@@ -78,23 +105,38 @@ class AnagramChecker():
 
 
 import unittest
+import time
 
 class AnagramTest(unittest.TestCase):
 
-    def test_anagram_with_punct_using_sort(self):
+    print("Testing anagrams: ", "THIS TEXT AND THE ONE BESIDE IT ARE EQUAL. I WROTE THIS ONE FIRST, AND THEN I GAVE IT TO MY FRIEND CHRISTIAN BOK AND ASKED HIM TO GENERATE A NEW TEXT USING EVERY LETTER AND EVERY PUNCTUATION MARK THAT I USED IN MINE. THE OTHER TEXT IS HIS." "MICAH LEXIER REQUESTED IN ADVANCE THAT I REINVENT HIS TEXT. SO I UNKNOTTED IT AND REKNITTED IT INTO THIS VERY FORM, BUT THEN I BEGAN TO THINK THAT HIS MESSAGE HAD ALREADY RESEWN A TOUTED ART OF GENUINE POETRY. HIS EERIE TEXT WAS MINE.")
+
+    def test_anagram_using_dict(self):
         anagram_checker = AnagramChecker()
-        print("Testing anagrams: ", "I am Lord Voldemort!!", "and",  "Tom Marvolo Riddle", "using built-in sort.")
-        self.assertTrue(anagram_checker.check_anagram_with_sort("I am Lord Voldemort!!", "Tom Marvolo Riddle"))
+        print("Testing anagrams using dictionaries.")
+        start = time.time() * 1000
+        self.assertTrue(anagram_checker.check_anagram_with_dict("THIS TEXT AND THE ONE BESIDE IT ARE EQUAL. I WROTE THIS ONE FIRST, AND THEN I GAVE IT TO MY FRIEND CHRISTIAN BOK AND ASKED HIM TO GENERATE A NEW TEXT USING EVERY LETTER AND EVERY PUNCTUATION MARK THAT I USED IN MINE. THE OTHER TEXT IS HIS.", "MICAH LEXIER REQUESTED IN ADVANCE THAT I REINVENT HIS TEXT. SO I UNKNOTTED IT AND REKNITTED IT INTO THIS VERY FORM, BUT THEN I BEGAN TO THINK THAT HIS MESSAGE HAD ALREADY RESEWN A TOUTED ART OF GENUINE POETRY. HIS EERIE TEXT WAS MINE."))
+        end = time.time() * 1000
+        duration = end - start
+        print("Processing duration: " + str(duration) +" milliseconds.")
 
     def test_anagram_using_sort(self):
         anagram_checker = AnagramChecker()
-        print("Testing anagrams: ", "Florida", "and",  "Rid Of Al", "using built-in sort.")
-        self.assertTrue(anagram_checker.check_anagram_with_sort("Florida", "Rid Of Al"))
+        print("Testing anagrams using built-in sort.")
+        start = time.time() * 1000
+        self.assertTrue(anagram_checker.check_anagram_with_sort("THIS TEXT AND THE ONE BESIDE IT ARE EQUAL. I WROTE THIS ONE FIRST, AND THEN I GAVE IT TO MY FRIEND CHRISTIAN BOK AND ASKED HIM TO GENERATE A NEW TEXT USING EVERY LETTER AND EVERY PUNCTUATION MARK THAT I USED IN MINE. THE OTHER TEXT IS HIS.", "MICAH LEXIER REQUESTED IN ADVANCE THAT I REINVENT HIS TEXT. SO I UNKNOTTED IT AND REKNITTED IT INTO THIS VERY FORM, BUT THEN I BEGAN TO THINK THAT HIS MESSAGE HAD ALREADY RESEWN A TOUTED ART OF GENUINE POETRY. HIS EERIE TEXT WAS MINE."))
+        end = time.time() * 1000
+        duration = end - start
+        print("Processing duration: " + str(duration) +" milliseconds.")
 
     def test_anagram_using_stack(self):
         anagram_checker = AnagramChecker()
-        print("Testing anagrams: ", "Salvages", "and",  "Las Vegas", "using stack object.")
-        self.assertTrue(anagram_checker.check_anagram("Salvages", "Las Vegas"))
+        print("Testing anagrams using stack object.")
+        start = time.time() * 1000
+        self.assertTrue(anagram_checker.check_anagram("THIS TEXT AND THE ONE BESIDE IT ARE EQUAL. I WROTE THIS ONE FIRST, AND THEN I GAVE IT TO MY FRIEND CHRISTIAN BOK AND ASKED HIM TO GENERATE A NEW TEXT USING EVERY LETTER AND EVERY PUNCTUATION MARK THAT I USED IN MINE. THE OTHER TEXT IS HIS.", "MICAH LEXIER REQUESTED IN ADVANCE THAT I REINVENT HIS TEXT. SO I UNKNOTTED IT AND REKNITTED IT INTO THIS VERY FORM, BUT THEN I BEGAN TO THINK THAT HIS MESSAGE HAD ALREADY RESEWN A TOUTED ART OF GENUINE POETRY. HIS EERIE TEXT WAS MINE."))
+        end = time.time() * 1000
+        duration = end - start
+        print("Processing duration: " + str(duration) +" milliseconds.")
 
 if __name__ == '__main__':
     unittest.main()
