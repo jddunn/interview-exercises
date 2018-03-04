@@ -109,13 +109,16 @@ import time
 
 class AnagramTest(unittest.TestCase):
 
-    print("Testing anagrams: ", "THIS TEXT AND THE ONE BESIDE IT ARE EQUAL. I WROTE THIS ONE FIRST, AND THEN I GAVE IT TO MY FRIEND CHRISTIAN BOK AND ASKED HIM TO GENERATE A NEW TEXT USING EVERY LETTER AND EVERY PUNCTUATION MARK THAT I USED IN MINE. THE OTHER TEXT IS HIS." "MICAH LEXIER REQUESTED IN ADVANCE THAT I REINVENT HIS TEXT. SO I UNKNOTTED IT AND REKNITTED IT INTO THIS VERY FORM, BUT THEN I BEGAN TO THINK THAT HIS MESSAGE HAD ALREADY RESEWN A TOUTED ART OF GENUINE POETRY. HIS EERIE TEXT WAS MINE.")
+    str1 = "THIS TEXT AND THE ONE BESIDE IT ARE EQUAL. I WROTE THIS ONE FIRST, AND THEN I GAVE IT TO MY FRIEND CHRISTIAN BOK AND ASKED HIM TO GENERATE A NEW TEXT USING EVERY LETTER AND EVERY PUNCTUATION MARK THAT I USED IN MINE. THE OTHER TEXT IS HIS."
+    str2 = "MICAH LEXIER REQUESTED IN ADVANCE THAT I REINVENT HIS TEXT. SO I UNKNOTTED IT AND REKNITTED IT INTO THIS VERY FORM, BUT THEN I BEGAN TO THINK THAT HIS MESSAGE HAD ALREADY RESEWN A TOUTED ART OF GENUINE POETRY. HIS EERIE TEXT WAS MINE."
+
+    print("Testing anagrams: ", "\n", str1, "\n", str2)
 
     def test_anagram_using_dict(self):
         anagram_checker = AnagramChecker()
         print("Testing anagrams using dictionaries.")
         start = time.time() * 1000
-        self.assertTrue(anagram_checker.check_anagram_with_dict("THIS TEXT AND THE ONE BESIDE IT ARE EQUAL. I WROTE THIS ONE FIRST, AND THEN I GAVE IT TO MY FRIEND CHRISTIAN BOK AND ASKED HIM TO GENERATE A NEW TEXT USING EVERY LETTER AND EVERY PUNCTUATION MARK THAT I USED IN MINE. THE OTHER TEXT IS HIS.", "MICAH LEXIER REQUESTED IN ADVANCE THAT I REINVENT HIS TEXT. SO I UNKNOTTED IT AND REKNITTED IT INTO THIS VERY FORM, BUT THEN I BEGAN TO THINK THAT HIS MESSAGE HAD ALREADY RESEWN A TOUTED ART OF GENUINE POETRY. HIS EERIE TEXT WAS MINE."))
+        self.assertTrue(anagram_checker.check_anagram_with_dict(self.str1, self.str2))
         end = time.time() * 1000
         duration = end - start
         print("Processing duration: " + str(duration) +" milliseconds.")
@@ -124,7 +127,7 @@ class AnagramTest(unittest.TestCase):
         anagram_checker = AnagramChecker()
         print("Testing anagrams using built-in sort.")
         start = time.time() * 1000
-        self.assertTrue(anagram_checker.check_anagram_with_sort("THIS TEXT AND THE ONE BESIDE IT ARE EQUAL. I WROTE THIS ONE FIRST, AND THEN I GAVE IT TO MY FRIEND CHRISTIAN BOK AND ASKED HIM TO GENERATE A NEW TEXT USING EVERY LETTER AND EVERY PUNCTUATION MARK THAT I USED IN MINE. THE OTHER TEXT IS HIS.", "MICAH LEXIER REQUESTED IN ADVANCE THAT I REINVENT HIS TEXT. SO I UNKNOTTED IT AND REKNITTED IT INTO THIS VERY FORM, BUT THEN I BEGAN TO THINK THAT HIS MESSAGE HAD ALREADY RESEWN A TOUTED ART OF GENUINE POETRY. HIS EERIE TEXT WAS MINE."))
+        self.assertTrue(anagram_checker.check_anagram_with_sort(self.str1, self.str2))
         end = time.time() * 1000
         duration = end - start
         print("Processing duration: " + str(duration) +" milliseconds.")
@@ -133,7 +136,7 @@ class AnagramTest(unittest.TestCase):
         anagram_checker = AnagramChecker()
         print("Testing anagrams using stack object.")
         start = time.time() * 1000
-        self.assertTrue(anagram_checker.check_anagram("THIS TEXT AND THE ONE BESIDE IT ARE EQUAL. I WROTE THIS ONE FIRST, AND THEN I GAVE IT TO MY FRIEND CHRISTIAN BOK AND ASKED HIM TO GENERATE A NEW TEXT USING EVERY LETTER AND EVERY PUNCTUATION MARK THAT I USED IN MINE. THE OTHER TEXT IS HIS.", "MICAH LEXIER REQUESTED IN ADVANCE THAT I REINVENT HIS TEXT. SO I UNKNOTTED IT AND REKNITTED IT INTO THIS VERY FORM, BUT THEN I BEGAN TO THINK THAT HIS MESSAGE HAD ALREADY RESEWN A TOUTED ART OF GENUINE POETRY. HIS EERIE TEXT WAS MINE."))
+        self.assertTrue(anagram_checker.check_anagram(self.str1, self.str2))
         end = time.time() * 1000
         duration = end - start
         print("Processing duration: " + str(duration) +" milliseconds.")
