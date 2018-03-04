@@ -1,6 +1,6 @@
 # Basic queue implementation without using insert or append
 
-class QueueList():
+class Queue():
 
     def __init__(self, items):
         self.items = items
@@ -40,16 +40,16 @@ import unittest
 class QueueTest(unittest.TestCase):
 
     def test_push(self):
-        li = QueueList([1,2,3,4])
-        print("Testing queue enqueue function: " + str(li) + ".")
-        self.assertEqual(li.enqueue(0), [0,1,2,3,4])
-        print("Result: " + str(li))
+        q = Queue([1,2,3,4])
+        print("Testing queue enqueue function: " + str(q) + ".")
+        self.assertEqual(q.enqueue(0), [0,1,2,3,4])
+        print("Result: " + str(q))
 
     def test_pop(self):
-        li = QueueList([1,2,3,4])
-        print("Testing queue dequeue function: " + str(li) + ".")
-        self.assertEqual(li.dequeue(), 1)
-        print("Result: "+ str(li))
+        q = Queue([1,2,3,4])
+        print("Testing queue dequeue function: " + str(q) + ".")
+        self.assertEqual(q.dequeue(), 1)
+        print("Result: "+ str(q))
 
 
 if __name__ == '__main__':
