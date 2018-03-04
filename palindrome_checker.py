@@ -49,7 +49,7 @@ import unittest
 
 class PalindromeTest(unittest.TestCase):
 
-    def test_palindrome_with(self):
+    def test_palindrome(self):
         palindrome_checker = PalindromeChecker()
         print("Testing palindrome with reverse string equality: ", """Do Geese See God?""")
         self.assertTrue(palindrome_checker.is_palindrome("Do Geese See God?"))
