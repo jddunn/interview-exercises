@@ -3,14 +3,11 @@
 class StripText():
 
     def strip(self, str_text):
-        str_removed_punct = []
-        for each in list(str_text):
-            if (each != ' '  and each != '.' and each != '!' and each != '&' and each != '"' and 
-                  each != "'" and each != '?' and each != ',' and each != '-' and each != ':'):
-                str_removed_punct.append(each)
-        str_text = ''.join(str_removed_punct)
+        punct_chars = [' ', '.', ',', '!', '?', '&', '"', "'", '-', ':']
+        str_text = [i for i in str_text if i not in punct_chars]
+        str_text = ''.join(str_text)
         return str_text
-
+        
 
 class ReverseStr():
 
