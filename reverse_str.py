@@ -64,6 +64,5 @@ class ReverseStrTest(unittest.TestCase):
 		print("Testing string reversed (with list): ", "hey there", " - ", "ereht yeh")
 		self.assertEqual(reverse_str.reverse_with_list("hey there"), "ereht yeh")
 
-
 if __name__ == '__main__':
 	unittest.main()

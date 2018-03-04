@@ -59,7 +59,5 @@ class PalindromeTest(unittest.TestCase):
         print("Testing palindrome with recursion: ", "Do Geese See God?")
         self.assertTrue(palindrome_checker.is_palindrome_recursive("Do Geese See God?"))
 
-    # def test_p
-
 if __name__ == '__main__':
     unittest.main()
