@@ -1,5 +1,3 @@
-# Multiples two numbers with recursion
-
 class Multiplier():
 
     def multiply(self, x, y):

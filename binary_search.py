@@ -1,3 +1,5 @@
+# Binary search for ordered lists
+
 class BinarySearch():
 
 	def binary_search(self, item, items):

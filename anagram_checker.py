@@ -1,4 +1,4 @@
-# Sentence-length anagram checker with three implementations
+# Sentence-length anagram checker
 
 class Stack():
 
